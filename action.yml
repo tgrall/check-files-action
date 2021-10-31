@@ -1,0 +1,5 @@
+name: "Check Files Action"
+description: "Check if Readme and License files are present"
+runs:
+  using: node12
+  main: index.js
