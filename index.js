@@ -15,11 +15,31 @@ async function checkFileExists(filePath) {
     });
 }
 
+// create a function that checks if the file starts with a markdown header
+async function checkFileStartsWithHeader(filePath) {
+    return fs.promises.readFile(filePath, 'utf8')
+    .then(fileContent => {
+
+        // remove all empty lines ad the beginning of the file
+        fileContent = fileContent.replace(/^\s*\n/gm, '');
+
+        if (fileContent.startsWith('#')) {
+            core.info(`File ${filePath} starts with a header`);
+            return true;
+        } else {
+            core.setFailed(`File ${filePath} does not start with a header`);
+            return false;
+        }
+    });
+}
+
 (
     async () => {
         try {
             checkFileExists("LICENSE");
             checkFileExists("README.md");
+
+            checkFileStartsWithHeader("README.md");
 
         } catch (error) {
             core.setFailed(error.message);
