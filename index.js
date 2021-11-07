@@ -61,12 +61,12 @@ async function checkFileStartsWithHeader(filePath) {
                             {
 
                                 path: 'README.md',
-                                start_line: 1,
-                                end_line: 1,
+                                start_line: 4,
+                                end_line: 4,
                                 annotation_level: 'failure',
                                 message: 'README.md must start with a header',
                                 start_column: 1,
-                                end_column: 1
+                                end_column: 10
                             }
                         ]
                     }
